@@ -1,0 +1,122 @@
+[
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Vehicles",
+        "question": "Which country has the international vehicle registration letter &#039;A&#039;?",
+        "correct_answer": "Austria",
+        "incorrect_answers": [
+            "Afghanistan",
+            "Australia",
+            "Armenia"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "General Knowledge",
+        "question": "What are Panama hats made out of?",
+        "correct_answer": "Straw",
+        "incorrect_answers": [
+            "Silk",
+            "Hemp",
+            "Flax"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Geography",
+        "question": "Where is the world&#039;s oldest still operational space launch facility located?",
+        "correct_answer": "Kazakhstan",
+        "incorrect_answers": [
+            "Russia",
+            "Iran",
+            "United States"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Entertainment: Music",
+        "question": "In which year did &quot;Caravan Palace&quot; release their first album?",
+        "correct_answer": "2008",
+        "incorrect_answers": [
+            "2000",
+            "2015",
+            "2004"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Celebrities",
+        "question": "Donald J. Trump&#039;s Middle Name is...",
+        "correct_answer": "John",
+        "incorrect_answers": [
+            "Jeff",
+            "Jerald",
+            "Jason"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Geography",
+        "question": "How tall is One World Trade Center in New York City?",
+        "correct_answer": "1,776 ft",
+        "incorrect_answers": [
+            "1,888 ft",
+            "1,225 ft",
+            "1,960 ft"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "hard",
+        "category": "Entertainment: Television",
+        "question": "What&#039;s Dr. Doofenshmirtz first name?",
+        "correct_answer": "Heinz",
+        "incorrect_answers": [
+            "Hans",
+            "Hank",
+            "Heidi"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "easy",
+        "category": "General Knowledge",
+        "question": "What is the name of NASA&rsquo;s most famous space telescope?",
+        "correct_answer": "Hubble Space Telescope",
+        "incorrect_answers": [
+            "Big Eye",
+            "Death Star",
+            "Millenium Falcon"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Entertainment: Comics",
+        "question": "Which &quot;Green Arrow&quot; sidekick commonly wears a baseball cap?",
+        "correct_answer": "Roy Harper",
+        "incorrect_answers": [
+            "Black Canary",
+            "Emiko Queen",
+            "Dick Grayson"
+        ]
+    },
+    {
+        "type": "multiple",
+        "difficulty": "medium",
+        "category": "Entertainment: Film",
+        "question": "Who played the Cenobite called &quot;Pinhead&quot; in the original Hellraiser films?",
+        "correct_answer": "Doug Bradley",
+        "incorrect_answers": [
+            "Doug Jones",
+            "Doug Savant",
+            "Doug Benson"
+        ]
+    }
+]

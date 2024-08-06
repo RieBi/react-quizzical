@@ -1,4 +1,6 @@
-export default function Welcome() {
+import PropTypes from "prop-types"
+
+export default function Welcome(props) {
     return (
         <div className="
         flex flex-col justify-center items-center text-center mt-[30vh]
@@ -6,9 +8,16 @@ export default function Welcome() {
         ">
             <h1 className="font-bold text-3xl mb-2">Quizzical</h1>
             <p>A quiz game to test the sharpness of your mind</p>   
-            <button className="bg-indigo-500 text-white mt-5 px-24 py-4 rounded-xl">
+            <button
+                className="bg-indigo-500 text-white mt-5 px-24 py-4 rounded-xl"
+                onClick={props.start}
+            >
                 <h2>Start quiz</h2>
             </button>
         </div>
     )
+}
+
+Welcome.propTypes = {
+    start: PropTypes.func.isRequired
 }
