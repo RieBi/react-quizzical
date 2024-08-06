@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import { decode } from "he"
 import { useState, useEffect } from "react"
 import { nanoid } from "nanoid"
+import Confetti from "react-confetti"
 
 export default function Quiz(props) {
     const [questionsData, setQuestionsData] = useState([]);
@@ -47,6 +48,10 @@ export default function Quiz(props) {
         }
     }
 
+    function getCorrectCount() {
+        return questionsData.filter(q => q.selectedChoice === q.correctAnswer).length;
+    }
+
     function finishQuiz() {
         if (!finished) {
             setFinished(true);
@@ -88,8 +93,12 @@ export default function Quiz(props) {
 
     return (
         <div className="text-indigo-900">
+            {getCorrectCount() === questionsData.length && <Confetti height={document.body.offsetHeight} />}
             <div>{questionElements}</div>
-            <div className="flex justify-center max-w-[550px] lg:max-w-[50%]">
+            <div className="flex flex-col lg:flex-row justify-center items-center max-w-[550px] lg:max-w-[60%]">
+                {finished &&
+                    <h2 className="text-2xl font-bold mr-4 mb-2">You scored {getCorrectCount()}/{questionsData.length} correct answers</h2>
+                }
                 <button
                     onClick={finishQuiz}
                     className="bg-indigo-500 px-16 py-4 rounded-lg"
