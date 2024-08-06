@@ -35,18 +35,23 @@ export default function Quiz(props) {
     }, [props.data])
 
     function selectChoice(questionId, choice) {
-        setQuestionsData(prevData => prevData.map(question => {
-            return question.id === questionId ?
-                {
-                    ...question,
-                    selectedChoice: choice
-                }
-                : question;
-        }));
+        if (!finished) {
+            setQuestionsData(prevData => prevData.map(question => {
+                return question.id === questionId ?
+                    {
+                        ...question,
+                        selectedChoice: choice
+                    }
+                    : question;
+            }));
+        }
     }
 
     function finishQuiz() {
-        setFinished(true);
+        if (!finished) {
+            setFinished(true);
+            window.scrollTo(0, 0);
+        }
     }
 
     const questionElements = questionsData.map(question => (
@@ -58,8 +63,18 @@ export default function Quiz(props) {
                         <button
                             onClick={() => selectChoice(question.id, choice)}
                             className={`
-                            px-5 py-1 mr-4 border border-slate-700 rounded-lg
+                            px-5 py-1 mr-4 border border-indigo-900 rounded-lg
                             ${question.selectedChoice === choice && "bg-violet-300 border-violet-300"}
+                            ${finished && "opacity-65"}
+                            ${finished && question.selectedChoice === choice && choice !== question.correctAnswer &&
+                                "bg-red-300 border-red-300"
+                                }
+                            ${finished && question.correctAnswer === choice &&
+                                "bg-green-300 border-green-300 opacity-100"
+                            }
+                            ${finished && question.correctAnswer === choice && question.selectedChoice === null &&
+                                "border-red-600"
+                            }
                             `}
                         >
                             {choice}
@@ -72,7 +87,7 @@ export default function Quiz(props) {
     ));
 
     return (
-        <div className="text-slate-700">
+        <div className="text-indigo-900">
             <div>{questionElements}</div>
             <div className="flex justify-center max-w-[550px] lg:max-w-[50%]">
                 <button
