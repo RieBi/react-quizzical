@@ -5,6 +5,7 @@ import { nanoid } from "nanoid"
 
 export default function Quiz(props) {
     const [questionsData, setQuestionsData] = useState([]);
+    const [finished, setFinished] = useState(false);
 
     // Creating new questions objects when data changes
     useEffect(() => {
@@ -30,6 +31,7 @@ export default function Quiz(props) {
 
         console.log("calculating")
         setQuestionsData(calculateQuestionsData());
+        setFinished(false);
     }, [props.data])
 
     function selectChoice(questionId, choice) {
@@ -43,7 +45,9 @@ export default function Quiz(props) {
         }));
     }
 
-    console.log(questionsData);
+    function finishQuiz() {
+        setFinished(true);
+    }
 
     const questionElements = questionsData.map(question => (
         <div key={question.id}>
@@ -69,7 +73,15 @@ export default function Quiz(props) {
 
     return (
         <div className="text-slate-700">
-            {questionElements}
+            <div>{questionElements}</div>
+            <div className="flex justify-center max-w-[550px] lg:max-w-[50%]">
+                <button
+                    onClick={finishQuiz}
+                    className="bg-indigo-500 px-16 py-4 rounded-lg"
+                >
+                    <h3 className="text-white text-lg">Check answers</h3>
+                </button>
+            </div>
         </div>
     )
 }
