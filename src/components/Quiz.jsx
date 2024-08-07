@@ -56,6 +56,8 @@ export default function Quiz(props) {
         if (!finished) {
             setFinished(true);
             window.scrollTo(0, 0);
+        } else {
+            props.fetchNewData();
         }
     }
 
@@ -103,7 +105,7 @@ export default function Quiz(props) {
                     onClick={finishQuiz}
                     className="bg-indigo-500 px-16 py-4 rounded-lg"
                 >
-                    <h3 className="text-white text-lg">Check answers</h3>
+                    <h3 className="text-white text-lg">{finished ? "Play again" : "Check answers"}</h3>
                 </button>
             </div>
         </div>
@@ -111,7 +113,8 @@ export default function Quiz(props) {
 }
 
 Quiz.propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    fetchNewData: PropTypes.func.isRequired
 }
 
 function shuffleArray(array) {
