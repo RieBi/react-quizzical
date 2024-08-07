@@ -3,6 +3,7 @@ import { decode } from "he"
 import { useState, useEffect } from "react"
 import { nanoid } from "nanoid"
 import Confetti from "react-confetti"
+import LoadingCircle from "./LoadingCircle"
 
 export default function Quiz(props) {
     const [questionsData, setQuestionsData] = useState([]);
@@ -33,7 +34,7 @@ export default function Quiz(props) {
         const calculatedData = calculateQuestionsData();
         setQuestionsData(calculatedData);
         setFinished(false);
-    }, [props.data])
+    }, [props, props.data])
 
     function selectChoice(questionId, choice) {
         if (!finished) {
@@ -74,6 +75,10 @@ export default function Quiz(props) {
         } else {
             return "";
         }
+    }
+
+    if (!questionsData.length) {
+        return <LoadingCircle />
     }
 
     const questionElements = questionsData.map(question => (
@@ -122,7 +127,7 @@ export default function Quiz(props) {
 
 Quiz.propTypes = {
     data: PropTypes.array.isRequired,
-    fetchNewData: PropTypes.func.isRequired
+    fetchNewData: PropTypes.func.isRequired,
 }
 
 function shuffleArray(array) {

@@ -1,6 +1,7 @@
 import Welcome from "./components/Welcome"
 import Quiz from "./components/Quiz"
 import { useState } from "react"
+import LoadingCircle from "./components/LoadingCircle";
 
 export default function App() {
   const url = "https://opentdb.com/api.php?amount=10&type=multiple";
@@ -23,7 +24,6 @@ export default function App() {
     }
 
     const fetchedData = (await response.json()).results;
-
     setData(fetchedData);
     setIsLoading(false);
   }
@@ -35,11 +35,7 @@ export default function App() {
   }
 
   if (isLoading) {
-    return (
-      <h1>
-        Loading, please wait :D
-      </h1>
-    )
+    return <LoadingCircle />
   }
 
   return (
