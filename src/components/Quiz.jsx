@@ -30,8 +30,8 @@ export default function Quiz(props) {
             });
         }
 
-        console.log("calculating")
-        setQuestionsData(calculateQuestionsData());
+        const calculatedData = calculateQuestionsData();
+        setQuestionsData(calculatedData);
         setFinished(false);
     }, [props.data])
 
@@ -61,6 +61,21 @@ export default function Quiz(props) {
         }
     }
 
+    function getButtonStyling(question, choice) {
+        if (question.selectedChoice === choice && choice !== question.correctAnswer) {
+            const className = "bg-red-300 border-red-300";
+            return className;
+        } else if (question.selectedChoice === choice && question.correctAnswer === choice) {
+            const className = "bg-green-300 border-green-300";
+            return className;
+        } else if (question.selectedChoice !== question.correctAnswer && question.correctAnswer === choice) {
+            const className = "bg-green-300 border-red-600";
+            return className;
+        } else {
+            return "";
+        }
+    }
+
     const questionElements = questionsData.map(question => (
         <div key={question.id}>
             <h2 className="font-bold text-xl lg:text-2xl">{question.question}</h2>
@@ -70,18 +85,11 @@ export default function Quiz(props) {
                         <button
                             onClick={() => selectChoice(question.id, choice)}
                             className={`
-                            px-5 py-1 mr-4 border border-indigo-900 rounded-lg
-                            ${question.selectedChoice === choice && "bg-violet-300 border-violet-300"}
-                            ${finished && "opacity-65"}
-                            ${finished && question.selectedChoice === choice && choice !== question.correctAnswer &&
-                                "bg-red-300 border-red-300"
-                                }
-                            ${finished && question.correctAnswer === choice &&
-                                "bg-green-300 border-green-300 opacity-100"
-                            }
-                            ${finished && question.correctAnswer === choice && question.selectedChoice === null &&
-                                "border-red-600"
-                            }
+                            px-5 py-1 mr-4 border rounded-lg
+                            ${!finished && "border-indigo-900"}
+                            ${!finished && question.selectedChoice === choice && "bg-violet-300"}
+                            ${finished && question.correctAnswer !== choice && "opacity-65"}
+                            ${finished && getButtonStyling(question, choice)}
                             `}
                         >
                             {choice}

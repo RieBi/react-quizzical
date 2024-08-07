@@ -1,6 +1,6 @@
 import Welcome from "./components/Welcome"
 import Quiz from "./components/Quiz"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function App() {
   const url = "https://opentdb.com/api.php?amount=10&type=multiple";
